@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<div id="greetingToast" class="toast"></div>
+
+<body>
+  <!--Header-->
+  <header class="site-header">
+    <nav class="nav">
+      <!-- Logo / Home link -->
+      <a class="logo" href="#">Portfolio</a>
+      <!-- Navigation links -->
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="theme-switcher">
+  <button id="lightBtn" class="btn" aria-label="Switch to light mode">Light</button> <!--light button-->
+  <button id="darkBtn" class="btn" aria-label="Switch to dark mode">Dark</button> <!--dark button-->
+  </div>
+
+    </nav>
+  </header>
+
+
+  <!--Main Content -->
+  <main id="main">
+    <!-- Introduction Section -->
+    <section class="Introduction section">
+      <div class="inner">
+        <h1>Hi <span style="color:rgb(222, 58, 25)">I am Norah ALharbi</span></h1>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        I'm a computer science student at KFUPM. I'm passionate about building web applications and 
+        exploring how technology can solve real-world problems. 
+        I enjoy working with modern web technologies and continuously 
+        learning new tools. Currently, I’m developing projects that strengthen my 
+        skills in software development, algorithms, and design.
+      </p>
+      <h3>Tagline</h3>
+      <ul>
+        <li> Turning ideas into code.</li>
+        <li> Learning by building</li>
+      </ul>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+     <div class="bar">
+      <h2>Projects</h2>
+      <!--Filter Buttons and Search Input--> 
+      <div class="filter" role="region" aria-label="Project Filters">
+        <button class="btn active" data-filter="all">All</button>
+        <button class="btn" data-filter="web">Web Apps</button>
+        <button class="btn" data-filter="mobile">Mobile Apps</button>
+        <button class="btn" data-filter="data-science">Data Science</button>
+        <input type="text" id="searchInput" placeholder="Search projects..." aria-label="Search Projects">
+          <!-- Sorting projects -->
+      <select id="sortProjects" aria-label="Sort projects">
+        <option value="none">Sort by…</option>
+        <option value="date">Newest First</option>
+        <option value="az">Title A–Z</option>
+      </select>
+        </div>
+
+      
+<!--if it is emty--> 
+        <div id="emptyState" style="display:none;">
+  No projects found for the selected filter.
+</div> 
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="card" data-category="mobile" data-title="CMOVIE" data-date="2024-01-10">
+          <div class="card-media">
+            <img src="assests\images\CMOIVE.png" alt="CMOVIE logo">
+          </div>
+          <div class="card-body">
+            <h3>CMOVIE</h3>
+            <p>
+              A simple web app to search and book movies online.  
+              It focuses on an easy-to-use interface, allowing users to explore showtimes and reserve tickets quickly.  
+              Built to practice core web development concepts like responsive layouts, forms, and client-side interactions.
+            </p>
+          </div>
+          <div class="card-actions">
+            <button class="btn details-btn" aria-controls="cmovieDetails" aria-expanded="false">Details</button>
+          </div>
+          <!--information of project-->
+          <div id="cmovieDetails" class="card-details" hidden>
+            <p>
+               with CMOVIE, users can browse movie listings, view showtimes, and book tickets seamlessly.  
+               The app is built using HTML, CSS, and JavaScript, focusing on a clean and intuitive user experience.  
+               It includes features like search functionality, filtering by genre, and a simple booking form.
+            </p> </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card" data-category="web" data-title="HASEEB" data-date="2025-11-01" >
+          <div class="card-media">
+            <img src="assests\images\HASEEB.png" alt="HASEEB logo">
+          </div>
+          <div class="card-body">
+            <h3>HASEEB</h3>
+            <p>
+              A lightweight financial management toolkit designed for small suppliers in the coffee supply industry.  
+              It helps users track expenses, manage sales, and make data-driven decisions with minimal overhead.
+            </p>
+          </div>
+          <div class="card-actions">
+            <button class="btn details-btn" aria-controls="HASEEBDetails" aria-expanded="false">Details</button>
+          </div>
+                    <!--information of project-->
+          <div id="HASEEBDetails" class="card-details" hidden>
+            <p>
+              HASEEB offers features such as expense tracking, sales management, and basic analytics to help small coffee suppliers optimize their operations.  
+              The app is built with a focus on simplicity and ease of use, ensuring that users can quickly access the tools they need without unnecessary complexity.
+            </p>
+        </div>
+
+      </div>
+     </div>
+   </section>
+   <section id="books" class="section">
+  <!--Favorite book section-->
+  <h2>My Favorite Books</h2>
+  <div class="bar" style="display:flex;align-items:center;gap:1rem;">
+    <button id="loadBooks" class="btn primary">Load Favorite Books</button>
+    <span id="booksStatus" aria-live="polite"></span>
+  </div>
+  <div id="booksList" class="books-grid"></div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <form id="contactForm" novalidate class="grid-2">
+        <!-- Name Field -->
+        <label>Name
+          <input id="name" name="name" type="text"  placeholder="Your name" required/>
+          <span class="error" id="errorName"></span>
+
+        </label>
+
+        <!-- Email Field -->
+        <label>Email
+          <input id="email" name="email" type="email"  placeholder="you@example.com" required />
+          <span class="error" id="errorEmail"></span>
+        </label>
+
+        <!-- Message Field -->
+        <label class="full">Message
+          <textarea id="message" name="message" rows="6"  placeholder="Say hello!" required></textarea>
+          <span class="error" id="errorMessage"></span>
+        </label>
+
+        <!-- Submit Button -->
+        <div class="form-actions full">
+          <button type="submit" class="btn primary">Send</button>
+        </div>
+      <p id="formMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+<section id="stats" class="section">
+  <p id="greetingText"></p>
+  <p>
+    You have been on this page for
+    <span id="timeOnSite">0 seconds</span>.
+  </p>
+</section>
+  <!--Footer-->
+  <footer class="site-footer">
+    <!-- Scroll back to top -->
+    <a href="#" class="to-top">↑ Back to top</a>
+    <!-- Dynamic year will be inserted by JS -->
+    <p>© <span id="year"></span> Portfolio</p>
+  </footer>
+
+  <!-- Link to external JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
